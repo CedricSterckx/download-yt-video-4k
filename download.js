@@ -7,8 +7,9 @@ const { SingleBar, Presets } = require('cli-progress');
 // Set FFmpeg path to use the static binary included in ffmpeg-static
 ffmpeg.setFfmpegPath(ffmpegStatic);
 
-const videoURL = 'LINK OF VIDEO';
-const outputVideoPath = 'output.mp4'; // The final video file path
+const args = process.argv.slice(2);
+const videoURL = args[args.indexOf('--input-url') + 1];
+const outputVideoPath = args[args.indexOf('--output') + 1];
 
 // Initialize progress bars
 const videoProgressBar = new SingleBar({}, Presets.shades_classic);
